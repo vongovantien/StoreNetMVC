@@ -80,13 +80,18 @@ namespace ShopApp.Areas.Admin.Controllers
                     await productModel.Image.CopyToAsync(new FileStream(serverFolder, FileMode.Create));
                 }
 
-                _context.Add(productModel);
-                await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+                await _productRepository.AddNewProduct(productModel);
+
+                int id = await _productRepository.AddNewProduct(productModel);
+
+                if (id > 0)
+                {
+                    return RedirectToAction(nameof(Index), new { isSuccess = true, bookId = id });
+                }
             }
             ViewData["CategoryId"] = new SelectList(_context.Categories, "CategoryId", "CategoryName", productModel.CategoryId);
             ViewData["SupplierId"] = new SelectList(_context.Suppliers, "SupplierId", "CompanyName", productModel.SupplierId);
-            return View(productModel);
+            return View();
         }
 
         // GET: Admin/Product/Edit/5

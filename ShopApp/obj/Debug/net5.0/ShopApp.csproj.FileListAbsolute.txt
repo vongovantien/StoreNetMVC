@@ -444,3 +444,5 @@ D:\dotNetProject\ShopApp\ShopApp\obj\Debug\net5.0\Razor\Areas\Admin\Views\Produc
 D:\dotNetProject\ShopApp\ShopApp\obj\Debug\net5.0\Razor\Areas\Admin\Views\Product\Edit.cshtml.g.cs
 D:\dotNetProject\ShopApp\ShopApp\obj\Debug\net5.0\Razor\Areas\Admin\Views\Product\Index.cshtml.g.cs
 D:\dotNetProject\ShopApp\ShopApp\bin\Debug\net5.0\libman.json
+D:\dotNetProject\ShopApp\ShopApp\obj\Debug\net5.0\ShopApp.csproj.AssemblyReference.cache
+D:\dotNetProject\ShopApp\ShopApp\obj\Debug\net5.0\Razor\Views\Shared\Components\TopProducts\Default.cshtml.g.cs

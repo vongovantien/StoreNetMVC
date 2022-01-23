@@ -24,9 +24,9 @@ namespace ShopApp.Repository
                 ProductName = model.ProductName,
                 Supplier = model.Supplier,
                 UnitPrice = model.UnitPrice,
-                Category = model.Category
+                Category = model.Category,
+                Image = model.ImageUrl
             };
-
             await _context.Products.AddAsync(newProduct);
             await _context.SaveChangesAsync();
 
@@ -56,13 +56,26 @@ namespace ShopApp.Repository
                {
                    ProductId = p.ProductId,
                    ProductName = p.ProductName,
-
                    Quantity = p.Quantity,
                    UnitPrice = p.UnitPrice,
                    ImageUrl = p.Image,
                    Category = p.Category,
                    Supplier = p.Supplier
                }).FirstOrDefaultAsync();
+        }
+
+        public async Task<List<ProductModel>> GetTopProducts()
+        {
+            return await _context.Products
+                .Include(p => p.Category)
+                .Include(p => p.Supplier)
+                  .Select(p => new ProductModel()
+                  {
+                      ProductName = p.ProductName,
+                      Supplier = p.Supplier,
+                      UnitPrice = p.UnitPrice,
+                      Category = p.Category
+                  }).Take(5).ToListAsync();
         }
     }
 }
